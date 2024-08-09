@@ -17,7 +17,9 @@ module.exports = (sequelize , DataTypes) => {
             references: {
                 model: 'Categories', 
                 key: 'category_id', 
-              }
+              },
+              onDelete: 'CASCADE',
+              onUpdate: 'CASCADE',
         },
         publisher_id:{
             type : DataTypes.INTEGER,
@@ -25,7 +27,9 @@ module.exports = (sequelize , DataTypes) => {
             references: {
                 model: 'Publishers', 
                 key: 'publisher_id', 
-              }
+              },
+              onDelete: 'CASCADE',
+              onUpdate: 'CASCADE',
         },
         book_edition: {
             type : DataTypes.STRING,
@@ -48,10 +52,16 @@ module.exports = (sequelize , DataTypes) => {
             references: {
                 model: 'Locations', 
                 key: 'location_id', 
-              }
+              },
+              onDelete: 'CASCADE',
+              onUpdate: 'CASCADE',
             
         },
 
     });
+
+    
+   
+
     return books
 }

@@ -2,22 +2,26 @@ module.exports = (sequelize , DataTypes) => {
     const location = sequelize.define('Location',{
       location_id: {
         type : DataTypes.INTEGER,
-        unique : true,
+        autoIncrement: true,
         primaryKey: true,
-        allowNull : false
       },
       shelf_no : {
         type: DataTypes.INTEGER,
+        unique : true,
         allowNull: false
       },
       shelf_name : {
         type : DataTypes.STRING,
         allowNull: false
       },
-      floor_no : {
+      flor_no : {
         type: DataTypes.INTEGER,
+        unique : false,
         allowNull: false
       }
     });
+   
+    
+
     return location
  }

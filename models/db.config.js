@@ -30,4 +30,17 @@ db.book_author = require('./db.bookAuthor')(sequelize , DataTypes);
 db.author = require('./db.author')(sequelize , DataTypes);
 db.location = require('./db.location')(sequelize , DataTypes)
 
+
+// Define associations
+db.books.belongsTo(db.category, { foreignKey: 'category_id' });
+db.books.belongsTo(db.publisher, { foreignKey: 'publisher_id' });
+db.books.belongsTo(db.location, { foreignKey: 'location_id' });
+
+db.book_author.belongsTo(db.books, { foreignKey: 'book_id' });
+db.book_author.belongsTo(db.author, { foreignKey: 'author_id' });
+
+db.category.hasMany(db.books, { foreignKey: 'category_id' });
+db.publisher.hasMany(db.books, { foreignKey: 'publisher_id' });
+db.location.hasMany(db.books, { foreignKey: 'location_id' });
+
 module.exports = db ; 

@@ -1,23 +1,35 @@
 module.exports = (sequelize , DataTypes) => {
    const bookAuthor = sequelize.define('Book_Auther',{
+     id:{
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+     },
       book_id: {
         type: DataTypes.INTEGER,
-        allowNull : false,
         primaryKey: true,
         references : {
             model: 'Books',
             key: 'book_id'
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
 
-      auther_id : {
+      author_id : {
         type : DataTypes.INTEGER,
-        allowNull: false,
         references : {
-            model: 'Authers',
-            key: 'auther_id'
-        }
+            model: 'Authors',
+            key: 'author_id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       }
    });
-   return bookAuthor
-}
+   
+ 
+    // Sync the model
+   
+    return bookAuthor;
+ };
+
